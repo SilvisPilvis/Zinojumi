@@ -4,10 +4,11 @@ $dbConn= new DbConn();
 // $messages = $dbConn->getAllMessages();
 // $messages = $dbConn->searchMessages("rob");
 // --- dynamoc search
-if(isset($_POST['searchQuery'])){
+// if(isset($_POST['searchQuery'])){
     
-}
+// }
 $searchQuery = $_POST['searchQuery'];
+// $searchQuery = 'rob';
 $messages = $dbConn->searchMessages($searchQuery);
 // ---
 if(isset($_POST['button'])){
@@ -22,22 +23,13 @@ if(isset($_POST['button'])){
     <p><?= $message['message'] ?></p>
 </div>
 <?php } ?>
-<form method="post">
-    <input type="text" name="searchQuery" id="search" placeholder="Search">
-    <input type="text" name="name" id="" placeholder="Username">
-    <input type="email" name="email" id="" placeholder="Email">
-    <input type="text" name="message" id="" placeholder="Message">
-    <input type="submit" name="button" value="Create">
-    <div id="results"></div>
-</form>
-
 <script>
     $(document).ready(function(){
     $('#search').on('input', function(){
         var searchQuery = $(this).val();
         if (searchQuery.length > 0) {
             $.ajax({
-                url: 'db.php',
+                url: 'search.php',
                 type: 'POST',
                 data: {searchQuery: searchQuery},
                 success: function(data){
@@ -50,3 +42,11 @@ if(isset($_POST['button'])){
     });
 });
 </script>
+<form method="post">
+    <input type="text" name="searchQuery" id="search" placeholder="Search">
+    <input type="text" name="name" id="" placeholder="Username">
+    <input type="email" name="email" id="" placeholder="Email">
+    <input type="text" name="message" id="" placeholder="Message">
+    <input type="submit" name="button" value="Create">
+</form>
+<div id="results"></div>
