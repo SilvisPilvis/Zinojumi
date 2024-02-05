@@ -68,9 +68,9 @@ class DBconn {
         return $messages;
     }
 
-    public function searchMessages($searchString) {
+    public function searchMessages($searchString, $criteria, $orderBy) {
         // Prepare the SQL statement
-        $stmt = $this->conn->prepare("SELECT * FROM zinojumi WHERE message LIKE :searchString OR name LIKE :searchString OR created LIKE :searchString");
+        $stmt = $this->conn->prepare("SELECT * FROM zinojumi WHERE message LIKE :searchString OR name LIKE :searchString OR created LIKE :searchString ORDER BY ".$criteria." ".$orderBy);
 
         // Bind the parameters
         $searchString = '%' . $searchString . '%';
