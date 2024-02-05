@@ -10,7 +10,7 @@ if(isset($_POST['searchQuery'])){
     $messages = $conn->searchMessages($searchQuery,$_POST['criteria'],  $_POST['order']);
     
     foreach ($messages as $message) {
-        echo "<div class='flex row message'><p>Name: ".$message['name']."</p><p>Email: ".$message['email']."</p><p>Message: ".$message['message']."</p><br></div>";
+        echo "<div class='message flex col'><p>".$message['name']."</p><p>".$message['email']."</p><p>".$message['message']."</p><br></div>";
     }
 }
 

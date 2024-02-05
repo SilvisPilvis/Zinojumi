@@ -51,6 +51,7 @@ class DBconn {
             echo "Message inserted successfully";
             return true;
         } else {
+            echo "Error inserting message";
             return false;
         }
     }
